@@ -15,16 +15,20 @@ if (navigator.serviceWorker) {
 }
 
 /**
- * This function converts the degrees from fahrenheit to celsius
+ * This function calculates the volume of a sphere
  */
-function convert() {
+window.onload = function() {
+  const params = new URLSearchParams(document.location.search)
+
   // input
-  const fahrenheit = parseInt(document.getElementById("fahrenheit").value)
+  const radius = params.get('radius')
+  console.log(radius)
 
   // process
-  const celsius = ((fahrenheit - 32) * 5) / 9
+  const volume = (4 / 3 * Math.PI * (radius * radius * radius))
+  const dimensions = "<ul>\n<li>radius = " + radius + "</li>\n</ul>" 
 
   // output
-  document.getElementById("celsius").innerHTML =
-    "<p>The  temperature in celsius is: " + celsius.toFixed(2) + "°<p>"
+  document.getElementById("dimensions").innerHTML = dimensions
+  document.getElementById("volume").innerHTML = 'The Volume is:' + volume + 'cm³'
 }
